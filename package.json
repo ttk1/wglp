@@ -1,0 +1,27 @@
+{
+  "name": "wglp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server",
+    "dist": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ttk1/wglp.git"
+  },
+  "author": "ttk1",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ttk1/wglp/issues"
+  },
+  "homepage": "https://github.com/ttk1/wglp#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.3",
+    "webpack-dev-server": "^3.7.1"
+  }
+}
