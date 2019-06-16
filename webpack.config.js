@@ -1,25 +1,24 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/main.js',
-    output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js'
-    },
-    devServer: {
-        contentBase: 'public',
-        port: 3000
-    },
-    module: {
-      rules: [
-        {
-          test: /\.(glsl|vs|fs|vert|frag)$/,
-          exclude: /node_modules/,
-          use: [
-            'raw-loader',
-            'glslify-loader'
-          ]
-        }
-      ]
-    }
+  entry: './src/main.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  },
+  devServer: {
+    contentBase: 'public',
+    port: 3000
+  },
+  module: {
+    rules: [{
+        test: /\.(glsl|vert|frag)$/,
+        exclude: [/node_modules/],
+        use: [
+          'raw-loader',
+          'glslify-loader'
+        ]
+      }
+    ]
+  }
 }
