@@ -1,12 +1,10 @@
-exports.init = gl => {
+exports.getShaderProgram = gl => {
     const sp = gl.createProgram();
     gl.attachShader(sp, getShader(gl, gl.VERTEX_SHADER, require('./glsl/test.vert').default));
     gl.attachShader(sp, getShader(gl, gl.FRAGMENT_SHADER, require('./glsl/test.frag').default));
     gl.linkProgram(sp);
     gl.useProgram(sp);
-
-    var idx = gl.getAttribLocation(sp, "aVertexPosition");
-    gl.enableVertexAttribArray(idx);
+    return sp;
 }
 
 function getShader(gl, type, source) {

@@ -8,6 +8,16 @@ window.onload = () => {
     canvas.height = 500;
 
     const gl = require('./context').getContext(canvas);
-    require('./shader').init(gl);
-    require('./buffer').init(gl);
+    const buf = require('./buffer').getBuffer(gl);
+    const sp = require('./shader').getShaderProgram(gl);
+
+    var idx = gl.getAttribLocation(sp, "aVertexPosition");
+    gl.enableVertexAttribArray(idx);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.vertexAttribPointer(idx, 3, gl.FLOAT, false, 0, 0);
+    gl.bindBuffer(gl.ARRAY_BUFFER, null);
+
+    require('./uniform').init(gl, sp);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 }
