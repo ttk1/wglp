@@ -1,4 +1,4 @@
-exports.initBudders = gl => {
+exports.init = gl => {
     var buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
 

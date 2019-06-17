@@ -8,9 +8,6 @@ window.onload = () => {
     canvas.height = 500;
 
     const gl = require('./context').getContext(canvas);
-    require('./shader').initShaders(gl);
-    require('./buffer').initBudders(gl);
-
-    
-
+    require('./shader').init(gl);
+    require('./buffer').init(gl);
 }
