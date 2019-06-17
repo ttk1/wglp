@@ -20,4 +20,8 @@ window.onload = () => {
 
     require('./uniform').init(gl, sp);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+    const myclass = require('./matrix').myclass;
+    const hoge = new myclass();
+    hoge.hoge();
 }
