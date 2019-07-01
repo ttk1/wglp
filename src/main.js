@@ -7,21 +7,21 @@ window.onload = () => {
     canvas.width = 500;
     canvas.height = 500;
 
+    // context
     const gl = require('./context').getContext(canvas);
-    const buf = require('./buffer').getBuffer(gl);
-    const sp = require('./shader').getShaderProgram(gl);
+
+    // shader program
+    const sp = require('./shaderProgram').getShaderProgram(gl);
+
 
     var idx = gl.getAttribLocation(sp, "aVertexPosition");
     gl.enableVertexAttribArray(idx);
 
+    const buf = require('./buffer').getBuffer(gl);    
     gl.bindBuffer(gl.ARRAY_BUFFER, buf);
     gl.vertexAttribPointer(idx, 3, gl.FLOAT, false, 0, 0);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
 
     require('./uniform').init(gl, sp);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-
-    const myclass = require('./matrix').myclass;
-    const hoge = new myclass();
-    hoge.hoge();
 }
