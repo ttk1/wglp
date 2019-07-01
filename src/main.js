@@ -2,26 +2,25 @@ window.onload = () => {
     // canvasの作成
     const container = document.getElementById('container');
     const canvas = document.createElement('canvas');
-    container.appendChild(canvas);
-
     canvas.width = 500;
     canvas.height = 500;
+    container.appendChild(canvas);
 
-    // context
-    const gl = require('./context').getContext(canvas);
-
-    // shader program
+    const gl = require('./glContext').getContext(canvas);
     const sp = require('./shaderProgram').getShaderProgram(gl);
+    require('./attribute').setAttributes(gl, sp);
+    const sp2 = require('./shaderProgram').getShaderProgram(gl);
+    require('./attribute').setAttributes(gl, sp2);
 
+    gl.useProgram(sp);
+    require('./uniform').setUniforms(gl, sp);
 
-    var idx = gl.getAttribLocation(sp, "aVertexPosition");
-    gl.enableVertexAttribArray(idx);
+    gl.useProgram(sp2);
+    require('./uniform').setUniforms(gl, sp2);
 
-    const buf = require('./buffer').getBuffer(gl);    
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.vertexAttribPointer(idx, 3, gl.FLOAT, false, 0, 0);
-    gl.bindBuffer(gl.ARRAY_BUFFER, null);
+    gl.useProgram(sp);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
-    require('./uniform').init(gl, sp);
+    gl.useProgram(sp2);
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 }
