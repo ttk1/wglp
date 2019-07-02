@@ -1,5 +1,5 @@
 exports.setAttributes = (gl, sp) => {
-    const idx = gl.getAttribLocation(sp, "pos");
+    const idx = gl.getAttribLocation(sp, 'pos');
     gl.enableVertexAttribArray(idx);
 
     const vertices = [
