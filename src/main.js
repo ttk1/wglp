@@ -12,9 +12,9 @@ window.onload = () => {
 
     let rad = 0;
     window.setInterval(() => {
-        rad+=0.01;
-        require('./uniform').setUniforms(gl, sp, rad);
+        rad+=0.003;
+        require('./uniform').setUniforms(gl, sp, 13 * rad, 17 * rad, 19 * rad);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
         gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    }, 10);
+    }, 15);
 }
