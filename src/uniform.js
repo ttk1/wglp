@@ -1,9 +1,16 @@
-exports.setUniforms = (gl, sp) => {
+exports.setUniforms = (gl, sp, rad) => {
+    /*
     const mvmatrix = [
         1, 0, 0, 0,
         0, 1, 0, 0,
         0, 0, 1, 0,
-        0, 0, -1, 1
+        0, 0, 0, 1
+    ];*/
+    const mvmatrix = [
+        Math.cos(rad), -Math.sin(rad), 0, 0,
+        Math.sin(rad), Math.cos(rad), 0, 0,
+        0, 0, 1, 0,
+        0, 0, 0, 1
     ];
     
     var idx = gl.getUniformLocation(sp, 'uMVMatrix');

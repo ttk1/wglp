@@ -1,5 +1,4 @@
 window.onload = () => {
-    // canvasの作成
     const container = document.getElementById('container');
     const canvas = document.createElement('canvas');
     canvas.width = 500;
@@ -9,18 +8,13 @@ window.onload = () => {
     const gl = require('./glContext').getContext(canvas);
     const sp = require('./shaderProgram').getShaderProgram(gl);
     require('./attribute').setAttributes(gl, sp);
-    const sp2 = require('./shaderProgram').getShaderProgram(gl);
-    require('./attribute').setAttributes(gl, sp2);
-
-    gl.useProgram(sp);
     require('./uniform').setUniforms(gl, sp);
 
-    gl.useProgram(sp2);
-    require('./uniform').setUniforms(gl, sp2);
-
-    gl.useProgram(sp);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-
-    gl.useProgram(sp2);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    let rad = 0;
+    window.setInterval(() => {
+        rad+=0.01;
+        require('./uniform').setUniforms(gl, sp, rad);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    }, 10);
 }
