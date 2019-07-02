@@ -9,5 +9,5 @@ uniform mat4 prj;
 
 void main(void) {
     gl_Position = prj * (rotX * rotY * rotZ) * vec4(pos, 1.0);
-    hoge = vec4(gl_Position.rgb * 3.0, 100.0);
+    hoge = (rotZ * rotY * rotX) * vec4(pos, 255.0);
 }
