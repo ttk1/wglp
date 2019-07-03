@@ -3,8 +3,8 @@ exports.setAttributes = (gl, sp) => {
     gl.enableVertexAttribArray(idx);
 
     const vertices = [];
-    for (let i = 0; i < 90; i++) {
-        vertices.push(Math.random() * 2 - 1);
+    for (let i = 0; i < 300; i++) {
+        vertices.push(Math.random() * 5 - 2.5);
     }
 
     const buf = gl.createBuffer();
