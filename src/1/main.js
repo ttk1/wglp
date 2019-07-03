@@ -1,9 +1,6 @@
-window.onload = () => {
-    const container = document.getElementById('container');
-    const canvas = document.createElement('canvas');
+exports.start = canvas => {
     canvas.width = 500;
     canvas.height = 500;
-    container.appendChild(canvas);
 
     const gl = require('./glContext').getContext(canvas);
     const sp = require('./shaderProgram').getShaderProgram(gl);

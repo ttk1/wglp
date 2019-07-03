@@ -6,7 +6,7 @@ exports.setAttributes = (gl, sp) => {
         1.0, 1.0, 0.0,
         -1.0, 1.0, 0.0,
         1.0, -1.0, 0.0,
-        -1.0, -1.0, 0.0
+        -1.0, -1.0, 0.0,
     ];
 
     const buf = gl.createBuffer();
