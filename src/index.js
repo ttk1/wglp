@@ -7,6 +7,8 @@ window.onload = () => {
     switch (mode) {
         case '1':
             return require('./1/main').start(canvas);
+        case '2':
+            return require('./2/main').start(canvas);
     }
 }
 
