@@ -1,7 +1,7 @@
 #version 300 es
 precision mediump float;
-in vec4 hoge;
-out vec4 color;
+in vec4 color;
+out vec4 outColor;
 void main(void) {
-    color = hoge * hoge;
+    outColor = floor(abs(color));
 }

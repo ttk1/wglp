@@ -5,11 +5,11 @@ exports.getShaderProgram = gl => {
     gl.linkProgram(sp);
     gl.useProgram(sp);
     return sp;
-}
 
-function getShaderObject(gl, type, shaderSource) {
-    const shaderObject = gl.createShader(type);
-    gl.shaderSource(shaderObject, shaderSource);
-    gl.compileShader(shaderObject);
-    return shaderObject;
+    function getShaderObject(gl, type, shaderSource) {
+        const shaderObject = gl.createShader(type);
+        gl.shaderSource(shaderObject, shaderSource);
+        gl.compileShader(shaderObject);
+        return shaderObject;
+    }
 }
