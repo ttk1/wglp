@@ -9,5 +9,11 @@
         "title": "Cube",
         "description": "立方体を作ってみた。",
         "source": "https://github.com/ttk1/wglp/tree/master/src/2"
+    },
+    {
+        "id": 3,
+        "title": "Mouse",
+        "description": "マウスでぐりぐり。",
+        "source": "https://github.com/ttk1/wglp/tree/master/src/3"
     }
 ]

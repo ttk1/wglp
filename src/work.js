@@ -1,6 +1,6 @@
 window.onload = () => {
     const id = getParam('id');
-    if (! /^[1-9][0-9]*$/.test(id)) {
+    if (!/^[1-9][0-9]*$/.test(id)) {
         const title = document.getElementById('title');
         title.innerHTML = 'not found';
         return;
@@ -9,7 +9,7 @@ window.onload = () => {
     const entry = require('./entries').find(
         entry => entry.id == id
     );
-    if (! entry) {
+    if (!entry) {
         const title = document.getElementById('title');
         title.innerHTML = 'not found';
         return;
@@ -32,6 +32,8 @@ window.onload = () => {
             return require('./1/main').start(canvas);
         case '2':
             return require('./2/main').start(canvas);
+        case '3':
+            return require('./3/main').start(canvas);
     }
 
     function getParam(key) {
