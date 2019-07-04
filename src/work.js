@@ -1,10 +1,33 @@
 window.onload = () => {
+    const id = getParam('id');
+    if (! /^[1-9][0-9]*$/.test(id)) {
+        const title = document.getElementById('title');
+        title.innerHTML = 'not found';
+        return;
+    }
+
+    const entry = require('./entries.json').find(
+        entry => entry.id == id
+    );
+    if (! entry) {
+        const title = document.getElementById('title');
+        title.innerHTML = 'not found';
+        return;
+    }
+
+    const title = document.getElementById('title');
+    title.innerHTML = entry.title;
+    const description = document.getElementById('description');
+    description.innerHTML = entry.description;
+    const source = document.getElementById('source');
+    source.innerHTML = entry.source;
+    source.href = entry.source;
+
     const container = document.getElementById('container');
     const canvas = document.createElement('canvas');
     container.appendChild(canvas);
 
-    const mode = getParam('id');
-    switch (mode) {
+    switch (id) {
         case '1':
             return require('./1/main').start(canvas);
         case '2':
