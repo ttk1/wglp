@@ -1,3 +1,12 @@
 [
-    "a", "b", "c"
+    {
+        "id": 1,
+        "title": "square",
+        "description": "no description"
+    },
+    {
+        "id": 2,
+        "title": "cube",
+        "description": "no description"
+    }
 ]
