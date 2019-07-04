@@ -20,7 +20,7 @@ window.onload = () => {
     const description = document.getElementById('description');
     description.innerHTML = entry.description;
     const source = document.getElementById('source');
-    source.innerHTML = entry.source;
+    source.innerHTML = 'View on GitHub';
     source.href = entry.source;
 
     const container = document.getElementById('container');
