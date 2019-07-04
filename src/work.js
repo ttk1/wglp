@@ -6,7 +6,7 @@ window.onload = () => {
         return;
     }
 
-    const entry = require('./entries.json').find(
+    const entry = require('./entries').find(
         entry => entry.id == id
     );
     if (! entry) {
