@@ -6,12 +6,11 @@ exports.start = canvas => {
     const sp = require('./shaderProgram').getShaderProgram(gl);
     require('./attribute').setAttributes(gl, sp);
 
-    canvas.addEventListener('mousemove', onMouseMove, false);
-
     let mouse_x = null;
     let mouse_y = null;
-    let rot_x = 0;
-    let rot_y = 0;
+    let rot = require('./rot').rot_x(0);
+
+    canvas.addEventListener('mousemove', onMouseMove, false);
 
     function onMouseMove(event) {
         if (mouse_x == null || mouse_y == null) {
@@ -19,14 +18,16 @@ exports.start = canvas => {
             mouse_y = event.offsetY;
         }
 
-        let diff_x = event.offsetX - mouse_x;
-        let diff_y = event.offsetY - mouse_y;
-        rot_x += diff_x * 0.01;
-        rot_y += diff_y * 0.01;
+        const diff_x = event.offsetX - mouse_x;
+        const diff_y = event.offsetY - mouse_y;
         mouse_x = event.offsetX;
         mouse_y = event.offsetY;
 
-        require('./uniform').setUniforms(gl, sp, rot_y, rot_x, 0);
+        const rot_x = require('./rot').rot_x(diff_y * 0.01);
+        const rot_y = require('./rot').rot_y(diff_x * 0.01);
+        rot = rot_x.mul(rot_y).mul(rot);
+        require('./uniform').setUniforms(gl, sp, rot);
+
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
         gl.drawArrays(gl.TRIANGLES, 0, 3 * 12);
     }
