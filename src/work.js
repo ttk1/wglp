@@ -34,6 +34,8 @@ window.onload = () => {
             return require('./2/main').start(canvas);
         case '3':
             return require('./3/main').start(canvas);
+        case '4':
+            return require('./4/main').start(canvas);
     }
 
     function getParam(key) {
