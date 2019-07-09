@@ -21,5 +21,11 @@
         "title": "TransformFeedbackの練習",
         "description": "TransformFeedbackの練習。結果はconsoleに表示する。",
         "source": "https://github.com/ttk1/wglp/tree/master/src/4"
+    },
+    {
+        "id": 5,
+        "title": "フラグメントシェーダだけで描画",
+        "description": "フラグメントシェーダだけで描画。",
+        "source": "https://github.com/ttk1/wglp/tree/master/src/5"
     }
 ]
