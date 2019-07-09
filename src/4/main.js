@@ -1,7 +1,4 @@
 exports.start = canvas => {
-    canvas.width = 500;
-    canvas.height = 500;
-
     const gl = require('./glContext').getContext(canvas);
     require('./shaderProgram').getShaderProgram(gl);
     require('./transformFeedback').setTransformFeedback(gl);
@@ -12,7 +9,7 @@ exports.start = canvas => {
     gl.endTransformFeedback();
     gl.disable(gl.RASTERIZER_DISCARD);
 
-    const arr = new Float32Array([0.0, 0.0, 0.0, 0.0]);
+    const arr = new Float32Array(4);
     gl.getBufferSubData(gl.TRANSFORM_FEEDBACK_BUFFER, 0, arr);
-    console.log(arr);
+    console.log(arr); // Float32Array [ 2, 4, 6, 8 ] が表示される
 }

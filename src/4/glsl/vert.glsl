@@ -1,4 +1,5 @@
 #version 300 es
+out vec4 result;
 void main(void) {
-    gl_Position = vec4(5.0) * 2.0;
+    result = vec4(1.0, 2.0, 3.0, 4.0) * 2.0;
 }
