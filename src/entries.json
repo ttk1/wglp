@@ -15,5 +15,11 @@
         "title": "Mouse",
         "description": "マウスでぐりぐり。",
         "source": "https://github.com/ttk1/wglp/tree/master/src/3"
+    },
+    {
+        "id": 4,
+        "title": "TransformFeedbackの練習",
+        "description": "TransformFeedbackの練習。結果はconsoleに表示する。",
+        "source": "https://github.com/ttk1/wglp/tree/master/src/4"
     }
 ]
