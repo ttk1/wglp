@@ -1,5 +1,5 @@
-exports.getShaderProgram = (gl: WebGLRenderingContext): WebGLProgram => {
-    const sp: WebGLProgram = gl.createProgram();
+export const getShaderProgram = (gl: WebGLRenderingContext): WebGLProgram => {
+    const sp = gl.createProgram();
     gl.attachShader(sp, getShaderObject(gl, gl.VERTEX_SHADER, require('./glsl/vert.glsl').default));
     gl.attachShader(sp, getShaderObject(gl, gl.FRAGMENT_SHADER, require('./glsl/frag.glsl').default));
     gl.linkProgram(sp);
@@ -7,7 +7,7 @@ exports.getShaderProgram = (gl: WebGLRenderingContext): WebGLProgram => {
     return sp;
 
     function getShaderObject(gl: WebGLRenderingContext, type: number, shaderSource: string) {
-        const shaderObject: WebGLShader = gl.createShader(type);
+        const shaderObject = gl.createShader(type);
         gl.shaderSource(shaderObject, shaderSource);
         gl.compileShader(shaderObject);
         return shaderObject;

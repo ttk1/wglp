@@ -1,5 +1,5 @@
-exports.getContext = (canvas: HTMLCanvasElement): WebGLRenderingContext => {
-    const gl: WebGLRenderingContext = <WebGLRenderingContext>canvas.getContext('webgl2');
+export const getContext = (canvas: HTMLCanvasElement): WebGLRenderingContext => {
+    const gl = <WebGLRenderingContext>canvas.getContext('webgl2');
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
