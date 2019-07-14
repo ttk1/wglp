@@ -13,6 +13,9 @@ module.exports = {
     contentBase: 'public',
     port: 3000
   },
+  resolve: {
+    extensions: ['.ts', '.js', '.json']
+  },
   module: {
     rules: [{
         test: /\.(glsl|vert|frag)$/,
@@ -21,7 +24,14 @@ module.exports = {
           'raw-loader',
           'glslify-loader'
         ]
+      },
+      {
+        test: /\.ts$/,
+        exclude: [/node_modules/],
+        use: [
+          'ts-loader'
+        ]
       }
     ]
   }
-}
+};
