@@ -6,8 +6,6 @@
 	],
 	"settings": {
 		"git.ignoreLimitWarning": true,
-		"javascript.suggestionActions.enabled": false,
-		"glsllint.glslangValidatorPath": "C:\\glslang\\bin\\glslangValidator.exe",
-		"glsllint.glslangValidatorArgs": ""
+		"javascript.suggestionActions.enabled": false
 	}
 }

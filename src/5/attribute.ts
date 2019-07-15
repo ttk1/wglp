@@ -14,4 +14,4 @@ export const setAttributes = (gl: WebGLRenderingContext, sp: WebGLProgram): void
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
     gl.vertexAttribPointer(idx, 3, gl.FLOAT, false, 0, 0);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
-}
+};

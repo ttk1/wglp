@@ -1,5 +1,8 @@
 #version 300 es
 precision mediump float;
+
+#pragma glslify: hoge = require("./hoge.vert")
+
 in vec3 color;
 out vec4 outColor;
 
@@ -11,6 +14,6 @@ void main(void) {
         mod(gl_FragCoord.x, w * 2.0) > w && mod(gl_FragCoord.y, w * 2.0) > w) {
         outColor = vec4(0, 1, 0, 1);
     } else {
-        outColor = vec4(0, 0, 1, 1);
+        outColor = hoge;
     }
 }

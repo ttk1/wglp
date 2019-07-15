@@ -5,4 +5,4 @@ export const getContext = (canvas: HTMLCanvasElement): WebGLRenderingContext => 
     gl.depthFunc(gl.LEQUAL);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
     return gl;
-}
+};
