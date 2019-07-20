@@ -5,8 +5,7 @@ in vec3 color;
 out vec4 outColor;
 
 void main(void) {
-    vec2 d = gl_PointCoord * 2.0 - 1.0;
-    if (length(d) < 1.0) {
+    if (distance(gl_PointCoord, vec2(0.5, 0.5)) < 0.5) {
         outColor = vec4(color, 1.0);
     } else {
         discard;
