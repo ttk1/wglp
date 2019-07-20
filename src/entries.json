@@ -27,5 +27,11 @@
         "title": "フラグメントシェーダだけで描画",
         "description": "フラグメントシェーダだけで描画。",
         "source": "https://github.com/ttk1/wglp/tree/master/src/5"
+    },
+    {
+        "id": 6,
+        "title": "パーティクル描画",
+        "description": "パーティクル描画",
+        "source": "https://github.com/ttk1/wglp/tree/master/src/6"
     }
 ]
