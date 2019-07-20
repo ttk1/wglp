@@ -11,4 +11,4 @@ export const start = (canvas: HTMLCanvasElement): void => {
     setAttributes(gl, sp);
 
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-}
+};
