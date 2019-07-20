@@ -1,16 +1,11 @@
 window.onload = () => {
-    const id = getParam('id');
+    const id = Number(getParam('id'));
     const title = document.getElementById('title');
     const description = document.getElementById('description');
     const source = document.getElementById('source') as HTMLAnchorElement;
 
-    if (!/^[1-9][0-9]*$/.test(id)) {
-        title.innerHTML = 'not found';
-        return;
-    }
-
     const entry: Entry = require('./entries').find(
-        (e: Entry) => e.id === Number(id)
+        (e: Entry) => e.id === id
     );
 
     if (!entry) {
