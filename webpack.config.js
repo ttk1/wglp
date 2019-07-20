@@ -2,8 +2,8 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    index: './src/index.js',
-    work: './src/work.js'
+    index: './src/index.ts',
+    work: './src/work.ts'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

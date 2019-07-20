@@ -1,8 +1,8 @@
 window.onload = () => {
-    const ul = document.getElementById('index');
-    const entries = require('./entries.json');
+    const ul = document.getElementById('index') as HTMLUListElement;
+    const entries: Entry[] = require('./entries.json');
     entries.forEach(
-        entry => {
+        (entry: Entry) => {
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.href = './work.html?id=' + entry.id;
@@ -11,4 +11,11 @@ window.onload = () => {
             ul.appendChild(li);
         }
     );
+};
+
+interface Entry {
+    id: number;
+    title: string;
+    description: string;
+    source: string;
 }
