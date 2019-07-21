@@ -1,4 +1,4 @@
-export const setAttributes = (gl: WebGLRenderingContext, sp: WebGLProgram, vNum: number): void => {
+export const setAttributes = (gl: WebGLRenderingContext, sp: WebGLProgram, vNum: number): WebGLBuffer => {
     const idx = gl.getAttribLocation(sp, 'pos');
     gl.enableVertexAttribArray(idx);
 
@@ -9,9 +9,10 @@ export const setAttributes = (gl: WebGLRenderingContext, sp: WebGLProgram, vNum:
         }
     }
 
-    const buf = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    const vbo = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, vbo);
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertices), gl.STATIC_DRAW);
     gl.vertexAttribPointer(idx, 3, gl.FLOAT, false, 0, 0);
     gl.bindBuffer(gl.ARRAY_BUFFER, null);
+    return vbo;
 };

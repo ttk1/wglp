@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/ttk1/wglp#readme",
   "devDependencies": {
+    "@types/webgl2": "0.0.5",
     "eslint": "^5.16.0",
     "glslify": "^7.0.0",
     "glslify-loader": "^2.0.0",
