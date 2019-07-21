@@ -14,9 +14,18 @@ export const start = (canvas: HTMLCanvasElement): void => {
     vbo[0] = setTransformFeedback(gl, vNum);
     vbo[1] = setAttributes(gl, sp, vNum);
 
+    const aa = gl.getUniformLocation(sp, 'mouse');
+    gl.uniform2f(aa, 0.0, 0.0);
+    canvas.addEventListener('mousemove', onMouseMove, false);
+    function onMouseMove(event: MouseEvent) {
+        const idx = gl.getUniformLocation(sp, 'mouse');
+        const mouseX = (event.offsetX / canvas.width) - 0.5;
+        const mouseY = (event.offsetY / canvas.height) - 0.5;
+        gl.uniform2f(idx, mouseX, -mouseY);
+    }
+
     let flg = 0;
     animate();
-
     function animate() {
         gl.beginTransformFeedback(gl.POINTS);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
