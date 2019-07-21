@@ -7,7 +7,7 @@ export const start = (canvas: HTMLCanvasElement): void => {
     canvas.width = 500;
     canvas.height = 500;
 
-    const vNum = 1000;
+    const vNum = 100000;
     const gl = getContext(canvas);
     const sp = getShaderProgram(gl);
     const vbo: WebGLBuffer[] = [];
