@@ -7,7 +7,7 @@ export const start = (canvas: HTMLCanvasElement): void => {
     canvas.width = 500;
     canvas.height = 500;
 
-    const vNum = 10;
+    const vNum = 1000;
     const gl = getContext(canvas);
     const sp = getShaderProgram(gl);
     const vbo: WebGLBuffer[] = [];
@@ -19,8 +19,8 @@ export const start = (canvas: HTMLCanvasElement): void => {
     canvas.addEventListener('mousemove', onMouseMove, false);
     function onMouseMove(event: MouseEvent) {
         const idx = gl.getUniformLocation(sp, 'mouse');
-        const mouseX = (event.offsetX / canvas.width) - 0.5;
-        const mouseY = (event.offsetY / canvas.height) - 0.5;
+        const mouseX = ((event.offsetX / canvas.width) - 0.5) * 2.0;
+        const mouseY = ((event.offsetY / canvas.height) - 0.5) * 2.0;
         gl.uniform2f(idx, mouseX, -mouseY);
     }
 
@@ -33,9 +33,15 @@ export const start = (canvas: HTMLCanvasElement): void => {
         gl.endTransformFeedback();
 
         gl.bindBufferBase(gl.TRANSFORM_FEEDBACK_BUFFER, 0, vbo[1 - flg]);
-        const idx = gl.getAttribLocation(sp, 'pos');
+
         gl.bindBuffer(gl.ARRAY_BUFFER, vbo[flg]);
-        gl.vertexAttribPointer(idx, 3, gl.FLOAT, false, 0, 0);
+        const stride = Float32Array.BYTES_PER_ELEMENT * 4;
+        const posLoc = gl.getAttribLocation(sp, 'pos');
+        gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, stride, 0);
+        const velLoc = gl.getAttribLocation(sp, 'vel');
+        const offset = Float32Array.BYTES_PER_ELEMENT * 2;
+        gl.vertexAttribPointer(velLoc, 2, gl.FLOAT, false, stride, offset);
+        gl.bindBuffer(gl.ARRAY_BUFFER, null);
         flg = flg ? 0 : 1;
         window.requestAnimationFrame(animate);
     }
