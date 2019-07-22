@@ -31,7 +31,7 @@
     {
         "id": 6,
         "title": "パーティクル描画",
-        "description": "パーティクル描画(50,000パーティクル)",
+        "description": "パーティクル描画",
         "source": "https://github.com/ttk1/wglp/tree/master/src/6"
     }
 ]
