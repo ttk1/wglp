@@ -8,7 +8,7 @@ export const setAttributes = (gl: WebGLRenderingContext, sp: WebGLProgram, vNum:
         // vel
         for (let j = 0; j < 2; j++) {
             // vertices.push(0.0);
-            vertices.push(Math.random() - 0.5);
+            vertices.push(0.0);
         }
     }
 
