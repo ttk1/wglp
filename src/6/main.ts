@@ -7,22 +7,41 @@ export const start = (canvas: HTMLCanvasElement): void => {
     canvas.width = 500;
     canvas.height = 500;
 
-    const vNum = 10000;
+    const vNum = 50000;
     const gl = getContext(canvas);
     const sp = getShaderProgram(gl);
     const vbo: WebGLBuffer[] = [];
     vbo[0] = setTransformFeedback(gl, vNum);
     vbo[1] = setAttributes(gl, sp, vNum);
 
-    const aa = gl.getUniformLocation(sp, 'mouse');
-    gl.uniform2f(aa, 0.0, 0.0);
+    const mouseLoc = gl.getUniformLocation(sp, 'mouse');
+    gl.uniform2f(mouseLoc, 0.0, 0.0);
     canvas.addEventListener('mousemove', onMouseMove, false);
     function onMouseMove(event: MouseEvent) {
-        const idx = gl.getUniformLocation(sp, 'mouse');
         const mouseX = ((event.offsetX / canvas.width) - 0.5) * 2.0;
         const mouseY = ((event.offsetY / canvas.height) - 0.5) * 2.0;
-        gl.uniform2f(idx, mouseX, -mouseY);
+        gl.uniform2f(mouseLoc, mouseX, -mouseY);
     }
+
+    let click = 1;
+    const clickLoc = gl.getUniformLocation(sp, 'click');
+    gl.uniform1i(clickLoc, click);
+    canvas.addEventListener('click', onClick, false);
+    function onClick(event: MouseEvent) {
+        click = click ? 0 : 1;
+        gl.uniform1i(clickLoc, click);
+    }
+
+    /*
+    canvas.addEventListener('mousedown', onMouseDown, false);
+    canvas.addEventListener('mouseup', onMouseUp, false);
+    function onMouseDown(event: MouseEvent) {
+        gl.uniform1i(clickLoc, 1);
+    }
+    function onMouseUp(event: MouseEvent) {
+        gl.uniform1i(clickLoc, 0);
+    }
+    */
 
     let flg = 0;
     animate();
